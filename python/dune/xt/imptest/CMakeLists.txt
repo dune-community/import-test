@@ -10,5 +10,6 @@
 # ~~~
 
 
-dune_pybindxi_add_module(_logging EXCLUDE_FROM_ALL logging.cc)
-dune_pybindxi_add_module(_timings EXCLUDE_FROM_ALL timings.cc)
+dune_pybindxi_add_module(_first EXCLUDE_FROM_ALL first.cc)
+dune_pybindxi_add_module(_second EXCLUDE_FROM_ALL second.cc)
+dune_pybindxi_add_module(_third EXCLUDE_FROM_ALL third.cc)

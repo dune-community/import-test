@@ -12,20 +12,27 @@
 #include <string>
 #include <vector>
 
-#include <dune/common/parallel/mpihelper.hh>
 #include <dune/pybindxi/pybind11.h>
 #include <dune/pybindxi/stl.h>
+#include <dune/pybindxi/iostream.h>
 
 #include <python/dune/xt/common/bindings.hh>
 #include <dune/xt/common/python.hh>
-#include <dune/xt/common/logging.hh>
+#include <dune/xt/common/timings.hh>
 #include <python/dune/xt/common/exceptions.bindings.hh>
+#include <dune/common/parallel/mpihelper.hh>
 
+#include <python/dune/xt/imptest/first.hh>
 
-PYBIND11_MODULE(_logging, m)
+class BarSecond : public FoobarFirst {};
+
+PYBIND11_MODULE(_second, m)
 {
   namespace py = pybind11;
   using namespace pybind11::literals;
   using namespace Dune::XT::Common;
 
+  py::module::import("dune.xt.imptest.first");
+
+  py::class_<BarSecond, FoobarFirst>(m, "BarSecond");
 }
