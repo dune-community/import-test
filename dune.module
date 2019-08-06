@@ -1,0 +1,10 @@
+################################
+# Dune module information file #
+################################
+
+#Name of the module
+Module: import-test
+Version: 1
+Maintainer: 1
+#depending on
+Depends: dune-xt-common
