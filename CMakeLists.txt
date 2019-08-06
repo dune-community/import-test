@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.12)
 project(import-test CXX)
 
 if(NOT (dune-common_DIR OR dune-common_ROOT OR
@@ -20,10 +20,23 @@ dune_project()
 
 dune_enable_all_packages()
 
-add_subdirectory(src)
-add_subdirectory(dune)
-add_subdirectory(doc)
 add_subdirectory(cmake/modules)
+
+include(DunePybindxiInstallPythonPackage)
+# this symlinks all files in python/ to the binary dir and install into the virtualenv from there thereby making the
+# compiled extensions directly usable from the venv
+dune_pybindxi_install_python_package(PATH python)
+include_dependent_binary_python_dirs()
+# do not change order here
+include(DuneUtils)
+add_subdirectory(python)
+
+include(GridUtils)
+
+add_header_listing()
+make_dependent_modules_sys_included()
+
+
 
 # finalize the dune project, e.g. generating config.h etc.
 finalize_dune_project(GENERATE_CONFIG_H_CMAKE)
