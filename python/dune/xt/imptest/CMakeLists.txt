@@ -12,4 +12,3 @@
 
 dune_pybindxi_add_module(_first EXCLUDE_FROM_ALL first.cc)
 dune_pybindxi_add_module(_second EXCLUDE_FROM_ALL second.cc)
-dune_pybindxi_add_module(_third EXCLUDE_FROM_ALL third.cc)

@@ -24,8 +24,6 @@
 
 #include <python/dune/xt/imptest/first.hh>
 
-class BarSecond : public FoobarFirst {};
-
 PYBIND11_MODULE(_second, m)
 {
   namespace py = pybind11;
@@ -34,5 +32,5 @@ PYBIND11_MODULE(_second, m)
 
   py::module::import("dune.xt.imptest.first");
 
-  py::class_<BarSecond, FoobarFirst>(m, "BarSecond");
+  py::class_<FoobarFirst>(m, "FoobarFirst");
 }
